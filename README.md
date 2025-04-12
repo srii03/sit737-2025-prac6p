@@ -28,22 +28,18 @@ Before you begin, ensure you have the following installed:
 
 Start by cloning the repository to your local machine:
 
-```bash
+
 git clone https://github.com/your-username/sit737-2025-prac6p.git
 cd sit737-2025-prac6p
 2. Build the Docker Image
 Build the Docker image for the Node.js application:
 
-bash
-Copy
-Edit
+
 docker build -t sit737-node-app:latest .
 3. Push Docker Image to Docker Hub
 Push the Docker image to your Docker Hub repository:
 
-bash
-Copy
-Edit
+
 docker tag sit737-node-app:latest your-dockerhub-username/sit737-node-app:latest
 docker push your-dockerhub-username/sit737-node-app:latest
 Replace your-dockerhub-username with your actual Docker Hub username.
@@ -51,18 +47,14 @@ Replace your-dockerhub-username with your actual Docker Hub username.
 4. Set Up Kubernetes Cluster (Optional)
 If you're using Minikube locally, start your Minikube cluster:
 
-bash
-Copy
-Edit
+
 minikube start
 If you already have access to a Kubernetes cluster, ensure that kubectl is configured to point to that cluster.
 
 5. Create Deployment and Service
 Apply the Kubernetes Deployment and Service YAML files:
 
-bash
-Copy
-Edit
+
 kubectl apply -f deployment.yaml
 kubectl apply -f service.yaml
 This will create a Deployment for the Node.js application and a NodePort service to expose the application.
@@ -70,9 +62,7 @@ This will create a Deployment for the Node.js application and a NodePort service
 6. Verify the Deployment
 Check the status of your pods and services:
 
-bash
-Copy
-Edit
+
 kubectl get pods
 kubectl get services
 You should see your Node.js application running under the sit737-node-app Deployment, and the service should be accessible via the NodePort.
@@ -80,38 +70,26 @@ You should see your Node.js application running under the sit737-node-app Deploy
 7. Access the Application
 To access the deployed application, use the NodePort assigned to your service. You can find the NodePort by running:
 
-bash
-Copy
-Edit
+
 kubectl get service sit737-node-app-service
 Use the PORT and your Kubernetes node's external IP or localhost to access the application in your browser.
 
 Example:
 
-bash
-Copy
-Edit
 http://localhost:32039
 8. Push Code to GitHub
 If you have changes to push, follow these steps:
 
 Add the changes:
 
-bash
-Copy
-Edit
+
 git add .
 Commit the changes:
 
-bash
-Copy
-Edit
 git commit -m "Description of changes"
 Push the changes to GitHub:
 
-bash
-Copy
-Edit
+
 git push -u origin main
 Files in this Repository
 Dockerfile: Defines how to build the Node.js application Docker image.
@@ -125,15 +103,10 @@ server.js: The Node.js application source code.
 Troubleshooting
 If the application is not starting properly, check the logs using:
 
-bash
-Copy
-Edit
+
 kubectl logs <pod-name>
 If you encounter issues pulling the Docker image, ensure you are logged into Docker Hub using:
 
-bash
-Copy
-Edit
 docker login
 Conclusion
 This project demonstrates how to deploy a containerized Node.js application on a Kubernetes cluster, making it scalable and easy to manage.
